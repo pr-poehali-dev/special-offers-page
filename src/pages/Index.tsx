@@ -1,12 +1,259 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState, useEffect } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import Icon from '@/components/ui/icon';
 
 const Index = () => {
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
+
+  useEffect(() => {
+    const endDate = new Date('2025-12-31T23:59:59');
+    
+    const timer = setInterval(() => {
+      const now = new Date();
+      const difference = endDate.getTime() - now.getTime();
+      
+      if (difference > 0) {
+        setTimeLeft({
+          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((difference / 1000 / 60) % 60),
+          seconds: Math.floor((difference / 1000) % 60)
+        });
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const features = [
+    {
+      icon: 'MapPin',
+      text: 'В наличии в Екатеринбурге'
+    },
+    {
+      icon: 'Package',
+      text: 'Полная комплектация: шкаф + зажим + ЗИП'
+    },
+    {
+      icon: 'Shield',
+      text: 'Гарантия 12 месяцев'
+    },
+    {
+      icon: 'Truck',
+      text: 'Доставка по России и СНГ'
+    }
+  ];
+
+  const specifications = [
+    { label: 'Модель', value: 'Yongan DZJ-90' },
+    { label: 'Тип', value: 'Вибропогружатель электрический крановый' },
+    { label: 'Максимальное усилие', value: '90 кН' },
+    { label: 'Частота вибрации', value: '1500-2500 об/мин' },
+    { label: 'Мощность двигателя', value: '55 кВт' },
+    { label: 'Напряжение питания', value: '380 В' },
+    { label: 'Вес', value: '2800 кг' },
+    { label: 'Страна производства', value: 'Китай' }
+  ];
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4 color-black text-black">Добро пожаловать!</h1>
-        <p className="text-xl text-gray-600">тут будет отображаться ваш проект</p>
-      </div>
+    <div className="min-h-screen">
+      <header className="border-b border-border/40 bg-card/50 backdrop-blur-sm sticky top-0 z-50">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <img src="https://kgs-ural.ru/wp-content/uploads/2020/12/logo.png" alt="KGS" className="h-12 w-auto" />
+            <div className="border-l border-border/40 pl-3">
+              <p className="text-sm text-muted-foreground leading-tight max-w-md">
+                Производство и поставка оборудования для<br />строительства свайных фундаментов
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
+            <a href="tel:+73432000000" className="text-sm hover:text-primary transition-colors">
+              +7 (343) 200-00-00
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <section className="py-16 md:py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-card/50" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6 animate-fade-in">
+              <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2">
+                <Icon name="Sparkles" size={16} className="text-primary" />
+                <span className="text-sm font-semibold text-primary uppercase tracking-wide">
+                  Новогоднее спецпредложение
+                </span>
+              </div>
+              
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                Вибропогружатель электрический крановый{' '}
+                <span className="text-primary">Yongan DZJ-90</span>
+              </h1>
+
+              <div className="space-y-3">
+                {features.map((feature, index) => (
+                  <div key={index} className="flex items-center gap-3 text-foreground/90">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
+                      <Icon name={feature.icon} size={20} className="text-primary" />
+                    </div>
+                    <span className="text-base">{feature.text}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Card className="p-6 bg-card/80 backdrop-blur-sm border-primary/20 animate-scale-in">
+                <div className="flex items-center justify-between mb-4">
+                  <span className="text-sm text-muted-foreground uppercase tracking-wide">
+                    Специальная цена
+                  </span>
+                  <div className="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm font-bold">
+                    -4%
+                  </div>
+                </div>
+                <div className="mb-6">
+                  <div className="text-4xl md:text-5xl font-bold mb-1">7 990 000 ₽</div>
+                  <div className="text-sm text-muted-foreground">с НДС</div>
+                </div>
+                <div className="flex gap-3">
+                  <Button className="flex-1 bg-secondary hover:bg-secondary/90 text-secondary-foreground">
+                    <Icon name="Phone" size={18} className="mr-2" />
+                    Позвонить
+                  </Button>
+                  <Button className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground">
+                    <Icon name="Send" size={18} className="mr-2" />
+                    Оставить заявку
+                  </Button>
+                </div>
+              </Card>
+
+              <div className="flex items-center gap-2 bg-card/60 border border-border/40 rounded-lg p-4">
+                <Icon name="Clock" size={20} className="text-primary flex-shrink-0" />
+                <span className="text-sm text-muted-foreground">
+                  Предложение действует до 31 декабря 2025
+                </span>
+              </div>
+            </div>
+
+            <div className="relative animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl blur-3xl" />
+              <img 
+                src="https://cdn.poehali.dev/files/Макет страницы.png" 
+                alt="Yongan DZJ-90" 
+                className="relative w-full h-auto drop-shadow-2xl"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-card/30">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            Успейте до конца года
+          </h2>
+          <div className="grid grid-cols-4 gap-4 max-w-3xl mx-auto">
+            {[
+              { value: timeLeft.days, label: 'Дней' },
+              { value: timeLeft.hours, label: 'Часов' },
+              { value: timeLeft.minutes, label: 'Минут' },
+              { value: timeLeft.seconds, label: 'Секунд' }
+            ].map((item, index) => (
+              <Card key={index} className="p-6 text-center bg-card/80 backdrop-blur-sm border-primary/20">
+                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+                  {String(item.value).padStart(2, '0')}
+                </div>
+                <div className="text-sm text-muted-foreground">{item.label}</div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+            Технические характеристики
+          </h2>
+          <Card className="max-w-4xl mx-auto p-8 bg-card/80 backdrop-blur-sm">
+            <div className="grid md:grid-cols-2 gap-x-8 gap-y-4">
+              {specifications.map((spec, index) => (
+                <div key={index} className="flex justify-between items-center py-3 border-b border-border/40 last:border-0">
+                  <span className="text-muted-foreground">{spec.label}</span>
+                  <span className="font-semibold text-foreground">{spec.value}</span>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </div>
+      </section>
+
+      <section className="py-16 bg-card/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
+              Оставьте заявку
+            </h2>
+            <p className="text-center text-muted-foreground mb-8">
+              Наши специалисты свяжутся с вами в ближайшее время
+            </p>
+            <Card className="p-8 bg-card/80 backdrop-blur-sm">
+              <form className="space-y-4">
+                <div>
+                  <label className="text-sm font-medium mb-2 block">Ваше имя</label>
+                  <Input placeholder="Иван Иванов" />
+                </div>
+                <div>
+                  <label className="text-sm font-medium mb-2 block">Телефон</label>
+                  <Input type="tel" placeholder="+7 (___) ___-__-__" />
+                </div>
+                <div>
+                  <label className="text-sm font-medium mb-2 block">Email</label>
+                  <Input type="email" placeholder="example@mail.ru" />
+                </div>
+                <div>
+                  <label className="text-sm font-medium mb-2 block">Комментарий</label>
+                  <Textarea placeholder="Расскажите о вашем проекте..." rows={4} />
+                </div>
+                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+                  <Icon name="Send" size={18} className="mr-2" />
+                  Отправить заявку
+                </Button>
+              </form>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <footer className="border-t border-border/40 bg-card/50 backdrop-blur-sm py-8">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex items-center gap-3">
+              <img src="https://kgs-ural.ru/wp-content/uploads/2020/12/logo.png" alt="KGS" className="h-10 w-auto" />
+              <span className="text-sm text-muted-foreground">© 2025 KGS-Ural. Все права защищены</span>
+            </div>
+            <div className="flex items-center gap-6">
+              <a href="tel:+73432000000" className="text-sm hover:text-primary transition-colors flex items-center gap-2">
+                <Icon name="Phone" size={16} />
+                +7 (343) 200-00-00
+              </a>
+              <a href="mailto:info@kgs-ural.ru" className="text-sm hover:text-primary transition-colors flex items-center gap-2">
+                <Icon name="Mail" size={16} />
+                info@kgs-ural.ru
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
