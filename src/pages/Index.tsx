@@ -9,7 +9,8 @@ const Index = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
-    phone: ''
+    phone: '',
+    email: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -67,6 +68,7 @@ const Index = () => {
 
 Имя: ${formData.name}
 Телефон: ${formData.phone}
+Email: ${formData.email || 'не указан'}
 Предложение: Yongan DZJ-90 - 8 150 000 ₽
     `.trim();
 
@@ -79,7 +81,7 @@ const Index = () => {
         title: 'Заявка отправлена',
         description: 'Мы свяжемся с вами в ближайшее время'
       });
-      setFormData({ name: '', phone: '' });
+      setFormData({ name: '', phone: '', email: '' });
     }, 1000);
   };
 
@@ -90,7 +92,7 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <header className="border-b border-border/40 bg-[#272D49] sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-4 py-5">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-4">
               <a href="https://kgs-ural.ru" target="_blank" rel="noopener noreferrer">
@@ -111,12 +113,14 @@ const Index = () => {
                   8 (343) 346-74-75
                 </a>
               </div>
-              <a href="https://t.me/kgs_ural" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
-                <Icon name="Send" size={24} className="text-[#F6A327]" />
-              </a>
-              <a href="https://kgs-ural.ru" target="_blank" rel="noopener noreferrer" className="text-sm font-medium hover:text-[#F6A327] transition-colors">
-                kgs-ural.ru
-              </a>
+              <div className="flex flex-col gap-2">
+                <a href="https://t.me/kgs_ural" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                  <Icon name="Send" size={24} className="text-[#229ED9]" />
+                </a>
+                <a href="https://kgs-ural.ru" target="_blank" rel="noopener noreferrer" className="text-sm font-medium hover:text-[#F6A327] transition-colors">
+                  kgs-ural.ru
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -132,11 +136,13 @@ const Index = () => {
                 </span>
               </div>
               
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-                Вибропогружатель<br />
-                электрический крановый<br />
-                <span className="text-[#F6A327]">Yongan DZJ-90</span>
-              </h1>
+              <a href="https://kgs-ural.ru/catalog/vibropogruzhateli-kranovie/seriya-dzj/yongan-dzj-90/" target="_blank" rel="noopener noreferrer" className="block hover:opacity-90 transition-opacity">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
+                  Вибропогружатель<br />
+                  электрический крановый<br />
+                  <span className="text-[#F6A327]">Yongan DZJ-90</span>
+                </h1>
+              </a>
 
               <div className="space-y-3">
                 {features.map((feature, index) => (
@@ -150,13 +156,10 @@ const Index = () => {
               </div>
 
               <Card className="p-6 bg-card/80 backdrop-blur-sm border-[#F6A327]/20 animate-scale-in">
-                <div className="flex items-center justify-between mb-4">
+                <div className="mb-4">
                   <span className="text-sm text-muted-foreground uppercase tracking-wide">
                     Специальная цена
                   </span>
-                  <div className="bg-[#F6A327]/20 text-[#F6A327] px-3 py-1 rounded-full text-sm font-bold">
-                    -4%
-                  </div>
                 </div>
                 <div className="mb-6">
                   <div className="text-4xl md:text-5xl font-bold mb-1">8 150 000 ₽</div>
@@ -189,9 +192,11 @@ const Index = () => {
 
       <section className="py-16" style={{ background: 'linear-gradient(135deg, #273369 0%, #272D49 100%)' }}>
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-            Характеристики Yongan DZJ-90
-          </h2>
+          <a href="https://kgs-ural.ru/catalog/vibropogruzhateli-kranovie/seriya-dzj/yongan-dzj-90/" target="_blank" rel="noopener noreferrer" className="block hover:opacity-90 transition-opacity">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+              Характеристики Yongan DZJ-90
+            </h2>
+          </a>
           <Card className="max-w-4xl mx-auto p-8 bg-card/80 backdrop-blur-sm border-[#F6A327]/10">
             <div className="grid md:grid-cols-2 gap-x-8 gap-y-4">
               {specifications.map((spec, index) => (
@@ -202,6 +207,13 @@ const Index = () => {
               ))}
             </div>
           </Card>
+          <div className="text-center mt-8">
+            <a href="https://kgs-ural.ru/catalog/vibropogruzhateli-kranovie/seriya-dzj/yongan-dzj-90/" target="_blank" rel="noopener noreferrer">
+              <Button className="bg-[#F6A327] hover:bg-[#F6A327]/90 text-[#273369] font-semibold px-8">
+                Подробнее
+              </Button>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -211,8 +223,11 @@ const Index = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
               Оставьте заявку
             </h2>
-            <p className="text-center text-muted-foreground mb-8">
+            <p className="text-center text-muted-foreground mb-2">
               Наши специалисты свяжутся с вами в ближайшее время
+            </p>
+            <p className="text-center text-sm text-muted-foreground mb-8">
+              Email
             </p>
             <Card className="p-8 bg-card/80 backdrop-blur-sm border-[#F6A327]/10">
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -239,6 +254,18 @@ const Index = () => {
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     required
+                  />
+                </div>
+                <div>
+                  <label className="text-sm font-medium mb-2 block">
+                    Email
+                  </label>
+                  <Input 
+                    type="email" 
+                    placeholder="example@mail.ru" 
+                    className="bg-background/50"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   />
                 </div>
                 <Button 
@@ -273,12 +300,14 @@ const Index = () => {
                   8 (343) 346-74-75
                 </a>
               </div>
-              <a href="https://t.me/kgs_ural" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
-                <Icon name="Send" size={20} className="text-[#F6A327]" />
-              </a>
-              <a href="https://kgs-ural.ru" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-[#F6A327] transition-colors">
-                kgs-ural.ru
-              </a>
+              <div className="flex flex-col gap-2">
+                <a href="https://t.me/kgs_ural" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                  <Icon name="Send" size={20} className="text-[#229ED9]" />
+                </a>
+                <a href="https://kgs-ural.ru" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-[#F6A327] transition-colors">
+                  kgs-ural.ru
+                </a>
+              </div>
             </div>
           </div>
         </div>
