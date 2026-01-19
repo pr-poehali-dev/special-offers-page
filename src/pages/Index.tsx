@@ -65,10 +65,10 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
-      <header className="border-b border-border/40 bg-card/50 backdrop-blur-sm sticky top-0 z-50">
+      <header className="border-b border-border/40 bg-[#272D49] sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img src="https://kgs-ural.ru/wp-content/uploads/2020/12/logo.png" alt="KGS" className="h-12 w-auto" />
+            <img src="https://cdn.poehali.dev/files/KGS_logo_white_yellow.png" alt="KGS" className="h-12 w-auto" />
             <div className="border-l border-border/40 pl-3">
               <p className="text-sm text-muted-foreground leading-tight max-w-md">
                 Производство и поставка оборудования для<br />строительства свайных фундаментов
@@ -83,53 +83,53 @@ const Index = () => {
         </div>
       </header>
 
-      <section className="py-16 md:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background to-card/50" />
+      <section className="py-16 md:py-24 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #273369 0%, #272D49 100%)' }}>
+        <div className="absolute inset-0" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 animate-fade-in">
-              <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2">
-                <Icon name="Sparkles" size={16} className="text-primary" />
-                <span className="text-sm font-semibold text-primary uppercase tracking-wide">
-                  Новогоднее спецпредложение
+              <div className="inline-flex items-center gap-2 bg-[#F6A327]/10 border border-[#F6A327]/30 rounded-md px-4 py-2">
+                <img src="https://cdn.poehali.dev/files/KGS_logo_white_yellow.png" alt="" className="h-5 w-auto" />
+                <span className="text-sm font-semibold text-[#F6A327] uppercase tracking-wide">
+                  СПЕЦПРЕДЛОЖЕНИЕ
                 </span>
               </div>
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 Вибропогружатель электрический крановый{' '}
-                <span className="text-primary">Yongan DZJ-90</span>
+                <span className="text-[#F6A327]">Yongan DZJ-90</span>
               </h1>
 
               <div className="space-y-3">
                 {features.map((feature, index) => (
                   <div key={index} className="flex items-center gap-3 text-foreground/90">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0">
-                      <Icon name={feature.icon} size={20} className="text-primary" />
+                    <div className="w-10 h-10 rounded-lg bg-[#F6A327]/10 border border-[#F6A327]/30 flex items-center justify-center flex-shrink-0">
+                      <Icon name={feature.icon} size={20} className="text-[#F6A327]" />
                     </div>
                     <span className="text-base">{feature.text}</span>
                   </div>
                 ))}
               </div>
 
-              <Card className="p-6 bg-card/80 backdrop-blur-sm border-primary/20 animate-scale-in">
+              <Card className="p-6 bg-card/80 backdrop-blur-sm border-[#F6A327]/20 animate-scale-in">
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-sm text-muted-foreground uppercase tracking-wide">
                     Специальная цена
                   </span>
-                  <div className="bg-primary/20 text-primary px-3 py-1 rounded-full text-sm font-bold">
+                  <div className="bg-[#F6A327]/20 text-[#F6A327] px-3 py-1 rounded-full text-sm font-bold">
                     -4%
                   </div>
                 </div>
                 <div className="mb-6">
-                  <div className="text-4xl md:text-5xl font-bold mb-1">7 990 000 ₽</div>
+                  <div className="text-4xl md:text-5xl font-bold mb-1">8 150 000 ₽</div>
                   <div className="text-sm text-muted-foreground">с НДС</div>
                 </div>
                 <div className="flex gap-3">
-                  <Button className="flex-1 bg-secondary hover:bg-secondary/90 text-secondary-foreground">
+                  <Button className="flex-1 bg-[#10B981] hover:bg-[#10B981]/90 text-white">
                     <Icon name="Phone" size={18} className="mr-2" />
                     Позвонить
                   </Button>
-                  <Button className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground">
+                  <Button className="flex-1 bg-[#F6A327] hover:bg-[#F6A327]/90 text-[#273369]">
                     <Icon name="Send" size={18} className="mr-2" />
                     Оставить заявку
                   </Button>
@@ -137,19 +137,19 @@ const Index = () => {
               </Card>
 
               <div className="flex items-center gap-2 bg-card/60 border border-border/40 rounded-lg p-4">
-                <Icon name="Clock" size={20} className="text-primary flex-shrink-0" />
+                <Icon name="Clock" size={20} className="text-[#F6A327] flex-shrink-0" />
                 <span className="text-sm text-muted-foreground">
                   Предложение действует до 31 декабря 2025
                 </span>
               </div>
             </div>
 
-            <div className="relative animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl blur-3xl" />
+            <div className="relative animate-fade-in flex items-center justify-center" style={{ animationDelay: '0.2s' }}>
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#F6A327]/20 to-transparent rounded-2xl blur-3xl" />
               <img 
-                src="https://cdn.poehali.dev/files/Макет страницы.png" 
+                src="https://cdn.poehali.dev/files/Вибрик без фона.png" 
                 alt="Yongan DZJ-90" 
-                className="relative w-full h-auto drop-shadow-2xl"
+                className="relative w-full max-w-lg h-auto drop-shadow-2xl"
               />
             </div>
           </div>
@@ -168,8 +168,8 @@ const Index = () => {
               { value: timeLeft.minutes, label: 'Минут' },
               { value: timeLeft.seconds, label: 'Секунд' }
             ].map((item, index) => (
-              <Card key={index} className="p-6 text-center bg-card/80 backdrop-blur-sm border-primary/20">
-                <div className="text-4xl md:text-5xl font-bold text-primary mb-2">
+              <Card key={index} className="p-6 text-center bg-card/80 backdrop-blur-sm border-[#F6A327]/20">
+                <div className="text-4xl md:text-5xl font-bold text-[#F6A327] mb-2">
                   {String(item.value).padStart(2, '0')}
                 </div>
                 <div className="text-sm text-muted-foreground">{item.label}</div>
@@ -179,12 +179,12 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="py-16" style={{ background: 'linear-gradient(135deg, #273369 0%, #272D49 100%)' }}>
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
             Технические характеристики
           </h2>
-          <Card className="max-w-4xl mx-auto p-8 bg-card/80 backdrop-blur-sm">
+          <Card className="max-w-4xl mx-auto p-8 bg-card/80 backdrop-blur-sm border-[#F6A327]/10">
             <div className="grid md:grid-cols-2 gap-x-8 gap-y-4">
               {specifications.map((spec, index) => (
                 <div key={index} className="flex justify-between items-center py-3 border-b border-border/40 last:border-0">
@@ -206,25 +206,25 @@ const Index = () => {
             <p className="text-center text-muted-foreground mb-8">
               Наши специалисты свяжутся с вами в ближайшее время
             </p>
-            <Card className="p-8 bg-card/80 backdrop-blur-sm">
+            <Card className="p-8 bg-card/80 backdrop-blur-sm border-[#F6A327]/10">
               <form className="space-y-4">
                 <div>
                   <label className="text-sm font-medium mb-2 block">Ваше имя</label>
-                  <Input placeholder="Иван Иванов" />
+                  <Input placeholder="Иван Иванов" className="bg-background/50" />
                 </div>
                 <div>
                   <label className="text-sm font-medium mb-2 block">Телефон</label>
-                  <Input type="tel" placeholder="+7 (___) ___-__-__" />
+                  <Input type="tel" placeholder="+7 (___) ___-__-__" className="bg-background/50" />
                 </div>
                 <div>
                   <label className="text-sm font-medium mb-2 block">Email</label>
-                  <Input type="email" placeholder="example@mail.ru" />
+                  <Input type="email" placeholder="example@mail.ru" className="bg-background/50" />
                 </div>
                 <div>
                   <label className="text-sm font-medium mb-2 block">Комментарий</label>
-                  <Textarea placeholder="Расскажите о вашем проекте..." rows={4} />
+                  <Textarea placeholder="Расскажите о вашем проекте..." rows={4} className="bg-background/50" />
                 </div>
-                <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+                <Button className="w-full bg-[#F6A327] hover:bg-[#F6A327]/90 text-[#273369] font-semibold">
                   <Icon name="Send" size={18} className="mr-2" />
                   Отправить заявку
                 </Button>
@@ -234,19 +234,19 @@ const Index = () => {
         </div>
       </section>
 
-      <footer className="border-t border-border/40 bg-card/50 backdrop-blur-sm py-8">
+      <footer className="border-t border-border/40 bg-[#272D49] py-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-3">
-              <img src="https://kgs-ural.ru/wp-content/uploads/2020/12/logo.png" alt="KGS" className="h-10 w-auto" />
+              <img src="https://cdn.poehali.dev/files/KGS_logo_white_yellow.png" alt="KGS" className="h-10 w-auto" />
               <span className="text-sm text-muted-foreground">© 2025 KGS-Ural. Все права защищены</span>
             </div>
             <div className="flex items-center gap-6">
-              <a href="tel:+73432000000" className="text-sm hover:text-primary transition-colors flex items-center gap-2">
+              <a href="tel:+73432000000" className="text-sm hover:text-[#F6A327] transition-colors flex items-center gap-2">
                 <Icon name="Phone" size={16} />
                 +7 (343) 200-00-00
               </a>
-              <a href="mailto:info@kgs-ural.ru" className="text-sm hover:text-primary transition-colors flex items-center gap-2">
+              <a href="mailto:info@kgs-ural.ru" className="text-sm hover:text-[#F6A327] transition-colors flex items-center gap-2">
                 <Icon name="Mail" size={16} />
                 info@kgs-ural.ru
               </a>
