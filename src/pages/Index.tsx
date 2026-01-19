@@ -15,10 +15,17 @@ const Index = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showMobileCallBtn, setShowMobileCallBtn] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowMobileCallBtn(window.scrollY > 300);
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const distanceFromBottom = documentHeight - (scrollPosition + windowHeight);
+      
+      setShowMobileCallBtn(scrollPosition > 300 && distanceFromBottom > 400);
+      setShowScrollTop(scrollPosition > 500);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -103,14 +110,18 @@ Email: ${formData.email || 'не указан'}
     document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen">
-      <header className="border-b border-border/40 bg-[#272D49] sticky top-0 z-50">
+      <header className="border-b border-border/40 bg-[#272D49] md:sticky md:top-0 z-50">
         <div className="container mx-auto px-4 py-5">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-4">
-              <a href="https://kgs-ural.ru" target="_blank" rel="noopener noreferrer">
-                <img src="https://cdn.poehali.dev/files/KGS_logo_white_yellow.png" alt="KGS" className="h-12 w-auto hover:opacity-80 transition-opacity" />
+              <a href="https://kgs-ural.ru" target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
+                <img src="https://cdn.poehali.dev/files/KGS_logo_white_yellow.png" alt="KGS" className="h-12 object-contain hover:opacity-80 transition-opacity" style={{minWidth: '120px'}} />
               </a>
               <div className="border-l border-border/40 pl-4">
                 <p className="text-base font-medium text-foreground leading-tight">
@@ -237,11 +248,8 @@ Email: ${formData.email || 'не указан'}
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
               Оставьте заявку
             </h2>
-            <p className="text-center text-muted-foreground mb-2">
+            <p className="text-center text-muted-foreground mb-8">
               Наши специалисты свяжутся с вами в ближайшее время
-            </p>
-            <p className="text-center text-sm text-muted-foreground mb-8">
-              Email
             </p>
             <Card className="p-8 bg-card/80 backdrop-blur-sm border-[#F6A327]/10">
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -307,8 +315,8 @@ Email: ${formData.email || 'не указан'}
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-4">
-              <a href="https://kgs-ural.ru" target="_blank" rel="noopener noreferrer">
-                <img src="https://cdn.poehali.dev/files/KGS_logo_white_yellow.png" alt="KGS" className="h-10 w-auto hover:opacity-80 transition-opacity" />
+              <a href="https://kgs-ural.ru" target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
+                <img src="https://cdn.poehali.dev/files/KGS_logo_white_yellow.png" alt="KGS" className="h-10 object-contain hover:opacity-80 transition-opacity" style={{minWidth: '100px'}} />
               </a>
               <span className="text-sm text-muted-foreground">© 2016-2026 КоперГруппСервис</span>
             </div>
@@ -344,6 +352,16 @@ Email: ${formData.email || 'не указан'}
             Позвонить 8 (800) 600-74-65
           </Button>
         </div>
+      )}
+
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-4 right-4 z-50 w-12 h-12 bg-[#F6A327] hover:bg-[#F6A327]/90 text-[#273369] rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 animate-fade-in"
+          aria-label="Прокрутить наверх"
+        >
+          <Icon name="ArrowUp" size={24} />
+        </button>
       )}
     </div>
   );
