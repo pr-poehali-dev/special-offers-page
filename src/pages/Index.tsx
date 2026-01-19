@@ -89,6 +89,10 @@ Email: ${formData.email || 'не указан'}
     window.location.href = 'tel:88006007465';
   };
 
+  const scrollToForm = () => {
+    document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
     <div className="min-h-screen">
       <header className="border-b border-border/40 bg-[#272D49] sticky top-0 z-50">
@@ -117,7 +121,8 @@ Email: ${formData.email || 'не указан'}
                 <a href="https://t.me/kgs_ural" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
                   <Icon name="Send" size={24} className="text-[#229ED9]" />
                 </a>
-                <a href="https://kgs-ural.ru" target="_blank" rel="noopener noreferrer" className="text-sm font-medium hover:text-[#F6A327] transition-colors">
+                <a href="https://kgs-ural.ru" target="_blank" rel="noopener noreferrer" className="text-sm font-medium hover:text-[#F6A327] transition-colors flex items-center gap-1">
+                  <Icon name="Globe" size={16} className="text-[#F6A327]" />
                   kgs-ural.ru
                 </a>
               </div>
@@ -136,7 +141,7 @@ Email: ${formData.email || 'не указан'}
                 </span>
               </div>
               
-              <a href="https://kgs-ural.ru/catalog/vibropogruzhateli-kranovie/seriya-dzj/yongan-dzj-90/" target="_blank" rel="noopener noreferrer" className="block hover:opacity-90 transition-opacity">
+              <a href="https://kgs-ural.ru/catalog/vibropogruzhateli-kranovie/seriya-dzj/yongan-dzj-90/" target="_blank" rel="noopener noreferrer" className="block hover:opacity-80 transition-all duration-300">
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
                   Вибропогружатель<br />
                   электрический крановый<br />
@@ -170,7 +175,7 @@ Email: ${formData.email || 'не указан'}
                     <Icon name="Phone" size={18} className="mr-2" />
                     Позвонить
                   </Button>
-                  <Button onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })} className="flex-1 bg-[#F6A327] hover:bg-[#F6A327]/90 text-[#273369]">
+                  <Button onClick={scrollToForm} className="flex-1 bg-[#F6A327] hover:bg-[#F6A327]/90 text-[#273369]">
                     <Icon name="Send" size={18} className="mr-2" />
                     Оставить заявку
                   </Button>
@@ -183,7 +188,7 @@ Email: ${formData.email || 'не указан'}
               <img 
                 src="https://cdn.poehali.dev/files/Вибрик без фона.png" 
                 alt="Yongan DZJ-90" 
-                className="relative w-full max-w-lg h-auto drop-shadow-2xl"
+                className="relative w-full max-w-xl h-auto drop-shadow-2xl hover:scale-105 transition-transform duration-300"
               />
             </div>
           </div>
@@ -192,7 +197,7 @@ Email: ${formData.email || 'не указан'}
 
       <section className="py-16" style={{ background: 'linear-gradient(135deg, #273369 0%, #272D49 100%)' }}>
         <div className="container mx-auto px-4">
-          <a href="https://kgs-ural.ru/catalog/vibropogruzhateli-kranovie/seriya-dzj/yongan-dzj-90/" target="_blank" rel="noopener noreferrer" className="block hover:opacity-90 transition-opacity">
+          <a href="https://kgs-ural.ru/catalog/vibropogruzhateli-kranovie/seriya-dzj/yongan-dzj-90/" target="_blank" rel="noopener noreferrer" className="block hover:opacity-80 transition-all duration-300">
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
               Характеристики Yongan DZJ-90
             </h2>
@@ -304,7 +309,8 @@ Email: ${formData.email || 'не указан'}
                 <a href="https://t.me/kgs_ural" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
                   <Icon name="Send" size={20} className="text-[#229ED9]" />
                 </a>
-                <a href="https://kgs-ural.ru" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-[#F6A327] transition-colors">
+                <a href="https://kgs-ural.ru" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-[#F6A327] transition-colors flex items-center gap-1">
+                  <Icon name="Globe" size={14} className="text-[#F6A327]" />
                   kgs-ural.ru
                 </a>
               </div>
